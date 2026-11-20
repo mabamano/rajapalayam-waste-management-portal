@@ -65,7 +65,7 @@ export interface MunicipalAdmin {
   adminId: string;
   name: string;
   role: 'municipal_admin';
-  municipality: string; // e.g. "Chennai"
+  municipality: string; // e.g. "Rajapalayam Municipality"
   email: string;
   createdAt: Date;
 }

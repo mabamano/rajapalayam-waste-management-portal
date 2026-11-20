@@ -14,8 +14,8 @@ export default function CityMapPage() {
         <DashboardLayout>
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-2xl font-bold font-display">City Waste Map</h1>
-                    <p className="text-muted-foreground">Live monitoring of smart bins and vehicles within the municipal corporation.</p>
+                    <h1 className="text-2xl font-bold font-display">Rajapalayam Waste Map</h1>
+                    <p className="text-muted-foreground">Live monitoring of smart bins and vehicles across Rajapalayam Municipality.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

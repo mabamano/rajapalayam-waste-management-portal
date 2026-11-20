@@ -79,12 +79,12 @@ export default function HouseholdRegister() {
                     <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="wardNumber">Ward Number</Label>
-                                <Input id="wardNumber" name="wardNumber" placeholder="W01" required value={formData.wardNumber} onChange={handleChange} />
+                                <Label htmlFor="wardNumber">Ward Number (W01 - W42)</Label>
+                                <Input id="wardNumber" name="wardNumber" placeholder="e.g. W08" required value={formData.wardNumber} onChange={handleChange} />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="streetNumber">Street Number</Label>
-                                <Input id="streetNumber" name="streetNumber" placeholder="S01" required value={formData.streetNumber} onChange={handleChange} />
+                                <Label htmlFor="streetNumber">Street / Area</Label>
+                                <Input id="streetNumber" name="streetNumber" placeholder="e.g. Tenkasi Road / S01" required value={formData.streetNumber} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">

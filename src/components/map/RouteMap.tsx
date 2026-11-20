@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-let DefaultIcon = L.icon({
+const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
     iconSize: [25, 41],
@@ -32,7 +32,7 @@ interface RouteMapProps {
 
 const RouteMap: React.FC<RouteMapProps> = ({
     points,
-    center = [13.0827, 80.2707], // Chennai
+    center = [9.4532, 77.5550], // Rajapalayam default
     zoom = 14
 }) => {
     const mapContainerRef = useRef<HTMLDivElement>(null);

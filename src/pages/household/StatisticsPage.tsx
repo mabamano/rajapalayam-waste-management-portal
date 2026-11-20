@@ -77,29 +77,44 @@ export default function StatisticsPage() {
                                 <CardTitle>Category Breakdown</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <div className="space-y-4">
-                                    <div className="flex items-center justify-between">
-                                        <span className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-green-500"></div> Organic</span>
-                                        <span className="font-semibold">{wasteTotals.organic.toFixed(1)} kg</span>
-                                    </div>
-                                    <div className="w-full bg-muted rounded-full h-2">
-                                        <div className="bg-green-500 h-2 rounded-full" style={{ width: `${(wasteTotals.organic / wasteTotals.total) * 100}%` }}></div>
-                                    </div>
-
-                                    <div className="flex items-center justify-between">
-                                        <span className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-blue-500"></div> Recyclable</span>
-                                        <span className="font-semibold">{wasteTotals.recyclable.toFixed(1)} kg</span>
-                                    </div>
-                                    <div className="w-full bg-muted rounded-full h-2">
-                                        <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${(wasteTotals.recyclable / wasteTotals.total) * 100}%` }}></div>
+                                <div className="space-y-4 font-mono text-xs">
+                                    <div className="space-y-1.5">
+                                        <div className="flex items-center justify-between">
+                                            <span className="flex items-center gap-2 text-zinc-700">
+                                                <span className="w-2 h-2 rounded-none bg-emerald-600" />
+                                                Organic (மக்கும் கழிவு)
+                                            </span>
+                                            <span className="font-semibold text-zinc-950">{wasteTotals.organic.toFixed(1)} kg</span>
+                                        </div>
+                                        <div className="w-full bg-zinc-100 rounded-none h-1.5 border border-zinc-200">
+                                            <div className="bg-emerald-600 h-1.5" style={{ width: `${(wasteTotals.organic / wasteTotals.total) * 100}%` }}></div>
+                                        </div>
                                     </div>
 
-                                    <div className="flex items-center justify-between">
-                                        <span className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-red-500"></div> Hazardous</span>
-                                        <span className="font-semibold">{wasteTotals.hazardous.toFixed(1)} kg</span>
+                                    <div className="space-y-1.5">
+                                        <div className="flex items-center justify-between">
+                                            <span className="flex items-center gap-2 text-zinc-700">
+                                                <span className="w-2 h-2 rounded-none bg-sky-600" />
+                                                Recyclable (உலர் மறுசுழற்சி)
+                                            </span>
+                                            <span className="font-semibold text-zinc-950">{wasteTotals.recyclable.toFixed(1)} kg</span>
+                                        </div>
+                                        <div className="w-full bg-zinc-100 rounded-none h-1.5 border border-zinc-200">
+                                            <div className="bg-sky-600 h-1.5" style={{ width: `${(wasteTotals.recyclable / wasteTotals.total) * 100}%` }}></div>
+                                        </div>
                                     </div>
-                                    <div className="w-full bg-muted rounded-full h-2">
-                                        <div className="bg-red-500 h-2 rounded-full" style={{ width: `${(wasteTotals.hazardous / wasteTotals.total) * 100}%` }}></div>
+
+                                    <div className="space-y-1.5">
+                                        <div className="flex items-center justify-between">
+                                            <span className="flex items-center gap-2 text-zinc-700">
+                                                <span className="w-2 h-2 rounded-none bg-rose-600" />
+                                                Hazardous (அபாயகரம்)
+                                            </span>
+                                            <span className="font-semibold text-zinc-950">{wasteTotals.hazardous.toFixed(1)} kg</span>
+                                        </div>
+                                        <div className="w-full bg-zinc-100 rounded-none h-1.5 border border-zinc-200">
+                                            <div className="bg-rose-600 h-1.5" style={{ width: `${(wasteTotals.hazardous / wasteTotals.total) * 100}%` }}></div>
+                                        </div>
                                     </div>
                                 </div>
                             </CardContent>

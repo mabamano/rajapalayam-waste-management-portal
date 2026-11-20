@@ -8,9 +8,9 @@ import { initializeApp } from "firebase/app"; // Assuming standard firebase app 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
-const SYSTEM_PROMPT = `You are an AI assistant for the Tamil Nadu Smart Bin Waste Management System.
-Answer ONLY using waste management, bin monitoring, collection logistics,
-household waste data, recycling, and sanitation operations.
+const SYSTEM_PROMPT = `You are an AI assistant for the Rajapalayam Municipality Smart Waste Management System (ராஜபாளையம் நகராட்சி).
+You have detailed knowledge of Rajapalayam's 42 administrative wards, 9 sanitary divisions, the 20.37-acre Arasiarpatti Municipal Compost Yard, decentralized Micro Composting Centres (MCCs), the 5 MT Biomethanation Plant, and cotton mill industrial waste segregation guidelines.
+Answer questions in English or Tamil focusing on waste management, bin monitoring, collection logistics, household waste data, recycling, and municipal sanitation operations.
 If the question is unrelated, refuse politely.`;
 
 export interface ChatMessage {

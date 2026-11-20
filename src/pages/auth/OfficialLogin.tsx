@@ -40,7 +40,7 @@ export default function OfficialLogin({ roleType }: OfficialLoginProps) {
         },
         municipal_admin: {
             title: 'Municipal Admin Login',
-            desc: 'City Administration Access',
+            desc: 'Rajapalayam Municipality Administration Access',
             icon: Building2,
             color: 'text-indigo-600',
             bgColor: 'bg-indigo-100',

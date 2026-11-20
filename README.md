@@ -1,152 +1,77 @@
+# Smart Waste 360 - Rajapalayam Municipality Edition 🏛️♻️
 
-# Smart Waste 360 - Tamil Nadu Edition 🌍♻️
-
-> **GDG TechSprint Hackathon Submission**
-
-## 1. Solution & Problem Statement 🎯
-
-### The Problem
-*   **Inefficient Collection:** Municipalities lack real-time data on bin fill levels and collection vehicle routes, leading to overflowing bins and fuel wastage.
-*   **Lack of Segregation:** Source segregation at the household level is inconsistent due to lack of awareness and incentives.
-*   **Opaque & Disconnected:** No digital link between the waste generator (citizen) and the waste collector, making accountability impossible.
-
-### The Solution: Smart Waste 360
-*   A **comprehensive digital ecosystem** connecting Households, Waste Collectors, Municipal Officers, and State Administrators.
-*   **AI-Driven & Data-Centric:** Utilizes **Google Gemini** for citizen assistance and real-time data for route optimization.
-*   **Behavioral Change:** Gamifies waste segregation with reward points and ensures accountability through QR-based digital handshakes.
+> **Official Municipal Solid Waste Management (SWM) Portal**  
+> *ராஜபாளையம் நகராட்சி திடக்கழிவு மேலாண்மை அமைப்பு* (Special Grade Municipality • Virudhunagar District, Tamil Nadu)
 
 ---
 
-## 2. Opportunities & Differentiation 🚀
+## 1. Executive Summary & Problem Statement 🎯
 
-### How is it different?
-*   **Competitors:** Focus primarily on *either* logistics tracking (fleet management) *or* citizen grievance reporting.
-*   **Our Edge:** We close the loop. We integrate the **human element** (gamified segregation) with **operational efficiency** (live tracking) and **AI intelligence** (chatbot).
-*   **Hyper-Local:** Built specifically for the Tamil Nadu context with native language support and localized administrative hierarchies.
+### Local Urban Context: Rajapalayam
+* **Population & Assessments:** ~47,497 residential buildings and 5,876 commercial establishments.
+* **Administrative Scope:** **42 Administrative Wards** organized into **9 Sanitary Divisions**, overseen by the Municipal Commissioner and Sanitary Inspectors.
+* **Waste Generation:** Approximately **46.5 to 48.5 TPD** (Tonnes Per Day) of municipal solid waste:
+  * *Biodegradable / Wet Waste:* ~26.8 TPD (processed into organic manure for local farmers via Micro Composting Centres - MCC and a 5 MT Biomethanation Plant).
+  * *Non-Biodegradable / Dry Waste:* ~21.7 TPD (segregated at Resource Recovery Centres - RRC / MRF).
+  * *Centralized Processing Facility:* **Arasiarpatti Municipal Compost Yard** (20.37 Acres) with weighbridge and legacy waste remediation platforms.
 
-### How it solves the problem?
-*   **Proof of Service:** QR code scanning forces physical presence of collectors, eliminating "fake" collection reports.
-*   **Incentivized Compliance:** Households segregate because they earn points (redeemable for tax credits/discounts), directly attacking the root cause of mixed waste.
-*   **Proactive vs Reactive:** IoT-simulated bin data allows officials to clear bins *before* they overflow, shifting from complaint-based to data-based management.
-
----
-
-## 3. Key Features ✨
-
-*   **👥 Role-Based Access Control:** tailored dashboards for 4 distinct user types (Household, Collector, Officer, State Admin).
-*   **🤖 AI Smart Assistant:** Built with **Google Gemini**, helping users identify waste types and answer queries in natural language.
-*   **📸 AI Image Analysis:** Uses **Gemini Vision** to auto-classify waste types and assess urgency from photos uploaded by collectors.
-*   **📍 Real-Time Monitoring:** Interactive maps visualizing bin fill-levels, collection routes, and blackspots.
-*   **📱 QR-Based Verification:** Secure digital handshake between household and collector to verify waste pickup.
-*   **🏆 Gamification Engine:** Reward system to encourage consistent waste segregation practices.
-*   **🗣️ Multilingual Support:** Full support for Tamil and English to ensure accessibility for all citizens.
+### The Problem Solved
+* **Route Efficiency:** Shift from fixed routes to dynamic, fill-level-optimized collection corridors across the 9 sanitary divisions.
+* **100% Source Segregation:** Citizens are incentivized via civic reward points (redeemable for property tax rebates/discounts) to separate Wet, Dry, and Domestic Hazardous waste.
+* **Tamper-Proof Service Proof:** QR-code verification at household gates ensures sanitary workers physically visit each premise, eliminating proxy collection logs.
 
 ---
 
-## 4. Google Technologies Used 🛠️
+## 2. Key Features ✨
 
-*   **🔥 Firebase:**
-    *   **Authentication:** Secure, seamless user identity management for all roles.
-    *   **Firestore:** Real-time NoSQL database for syncing bin status, routes, and user points instantly across devices.
-*   **🧠 Google Gemini AI:**
-    *   **Multimodal Capabilities:** Uses **Gemini 2.5 Flash** for high-speed image analysis (Vision) to detect hazardous waste and bin overflows from photos.
-    *   **Smart Chat:** Context-aware responses for citizen inquiries.
-*   **🗺️ Google Maps Platform:**
-    *   **Heatmaps:** Visualizes waste generation density and blackspots for strategic resource allocation.
-    *   **Interactive Maps:** Dynamic location tracking for bins and collection vehicles.
+* **👥 Role-Based Portals:** Tailored interfaces for Household Citizens, Waste Collectors (தூய்மை பணியாளர்கள்), Sanitary Inspectors (Division Officers), Department Leads (Sanitation, Logistics, Recycling), and the Municipal Commissioner.
+* **🗺️ Real-Time Municipal Map (Leaflet / Google Maps):** Live GPS monitoring of smart bins and collection fleets centered on Rajapalayam (`9.4532° N, 77.5550° E`).
+* **🤖 Rajapalayam Gemini 2.5 Flash AI:** Context-aware multilingual assistant (Tamil & English) trained on Rajapalayam's 42 wards, MCC locations, and segregation bylaws.
+* **📈 Predictive Festival & Harvest Surges:** Early-warning surge modeling for local occasions (Panguni Pongal at Sri Maya Karuppasamy Temple, Ayyanar Kovil pilgrimage corridor, and summer cotton ginning mill packaging waste).
+* **📱 QR Digital Handshake:** Secure verification between household gate QR codes and collector mobile scanners.
+* **🏆 Green Champions Leaderboard:** Neighborhood gamification by street, ward (e.g., Ward 12 Mudangiar, Ward 08 Gandhi Kalai Mandram, Ward 24 Cotton Market), and municipality.
 
 ---
 
-## 5. Process Flow Diagram 🔄
+## 3. Demo Credentials 🔑
 
-```mermaid
-graph TD
-    A[Household] -->|Segregates Waste| B(Orgainc/Recyclable/Hazardous)
-    B -->|Generates QR| C[Mobile App]
-    D[Collector] -->|Arrives & Scans QR| C
-    C -->|Verifies Location & Time| E{Valid?}
-    E -->|Yes| F[Update Firestore]
-    E -->|No| G[Reject Collection]
-    F -->|Credit Points| H[Household Dashboard]
-    F -->|Update Status| I[Admin Dashboard]
-    F -->|Optimize Route| J[Logistics Map]
-```
+| Portal / Role | ID / Username | Password / PIN | Description |
+| :--- | :--- | :--- | :--- |
+| **Municipal Commissioner** | `MUN001` | `admin` | Full executive administration for Rajapalayam |
+| **Sanitary Inspector** | `OFF001` | `admin123` | Supervisory access across 9 sanitary divisions |
+| **Ward Officer** | `OFF002` | `officer123` | Ward-level compliance (Wards 08 & 12) |
+| **Sanitation Dept Lead** | `SAN001` | `admin` | Sanitation operations & bin clearance dispatch |
+| **Logistics Dept Lead** | `LOG001` | `admin` | Vehicle fleet & fuel optimization |
+| **Recycling Dept Lead** | `REC001` | `admin` | Micro Composting Centres (MCC) & MRF sales |
+| **Field Collector** | `COL001` | `collector123` | Route navigation & QR scan (Ward 08) |
+| **Household User** | `W08-S02-H012` | `1234` | Tenkasi Road resident dashboard |
 
 ---
 
-## 6. Wireframes / User Interface 🖼️
+## 4. Setup & Running ⚙️
 
-*   **Household View:** Clean interface showing waste history, next pickup slot, and accumulated reward points.
-*   **Collector View:** "My Route" map navigation with prioritized stops based on efficiency.
-*   **Admin Dashboard:** 'Mission Control' style view with live map of the city, showing green (empty) vs red (critical) bins.
-*   **State Dashboard:** High-level aggregation of district-wise performance metrics (Chennai vs Coimbatore vs Madurai).
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-> *The solution implements a "Glassmorphism" design language with a Tamil Nadu government color theme (Blue/Green/White) for a premium, modern feel.*
+2. **Environment Configuration:**
+   Create `.env` in root with:
+   ```env
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   # Optional: Google Maps Platform Key (Leaflet works out-of-the-box without key)
+   VITE_GOOGLE_MAPS_API_KEY=your_google_maps_key
+   ```
 
----
+3. **Start Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-## 7. Architecture Diagram 🏗️
-
-```mermaid
-graph LR
-    subgraph Client_Side
-        React[React + Vite App]
-        Leaflet[Leaflet Maps]
-        H[Household UI]
-        C[Collector UI]
-        A[Admin UI]
-    end
-
-    subgraph Google_Cloud_Services
-        Auth[Firebase Auth]
-        DB[Firebase Firestore]
-        AI[Gemini AI API]
-    end
-
-    H <--> React
-    C <--> React
-    A <--> React
-    
-    React <-->|Auth Tokens| Auth
-    React <-->|Real-time Data| DB
-    React <-->|Chat Queries| AI
-```
+4. **Run IoT Sensor Simulation:**
+   ```bash
+   python scripts/rpi_sensor_push.py
+   ```
 
 ---
-
-## 8. Future Development 🔮
-
-*   **IoT Integration:** Connecting physical ultrasonic sensors in bins directly to the Firebase backend.
-*   **Predictive Logistics:** ML models to predict waste generation spikes during festivals (e.g., Pongal, Diwali).
-*   **Offline Support:** Making the Collector app fully functional in low-network zones using Firestore offline persistence.
-
----
-
-## 9. Setup & Installation ⚙️
-
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/your-username/smart-waste-360.git
-    cd smart-waste-360
-    ```
-
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Environment Configuration**
-    *   Create a `.env` file in the root directory.
-    *   Add your Google Gemini API Key:
-        ```env
-        VITE_GEMINI_API_KEY=your_actual_api_key_here
-        ```
-    *   *Note: See `.env.example` for reference.*
-
-4.  **Run Application**
-    ```bash
-    npm run dev
-    ```
-
----
-*Built with ❤️ for a Cleaner Tamil Nadu.*
+*Built with ❤️ for a Clean and Green Rajapalayam (தூய்மை ராஜபாளையம்).*

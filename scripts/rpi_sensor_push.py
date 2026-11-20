@@ -43,9 +43,12 @@ def push_data():
             timestamp = datetime.now().isoformat()
             
             # Bin Status Update
-            bin_id = "h1" # Hardcoded for demo
+            bin_id = "RAJ-BIN-001" # Gandhi Kalai Mandram (Rajapalayam Municipal Office)
             bin_data = {
                 "houseId": bin_id,
+                "binId": bin_id,
+                "location": "Gandhi Kalai Mandram, Tenkasi Road, Rajapalayam",
+                "wardNumber": "W08",
                 "fillLevel": fill_level,
                 "lastUpdated": timestamp,
                 "status": "full" if fill_level > 80 else "partial" if fill_level > 20 else "empty"

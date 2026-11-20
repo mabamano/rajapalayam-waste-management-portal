@@ -115,7 +115,7 @@ export default function StateAdminDashboard() {
                                                 {index + 1}
                                             </span>
                                             <div>
-                                                <p className="font-medium">Chennai (Zone {ward.wardNumber})</p>
+                                                <p className="font-medium">Rajapalayam (Ward {ward.wardNumber})</p>
                                                 <p className="text-xs text-muted-foreground">
                                                     High compliance rating
                                                 </p>

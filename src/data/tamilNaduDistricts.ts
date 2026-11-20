@@ -8,6 +8,26 @@ export interface DistrictInfo {
 }
 
 export const districtData: Record<string, DistrictInfo> = {
+    "virudhunagar": {
+        "districtName": "Virudhunagar (Rajapalayam Municipality)",
+        "sources": [
+            "Arasiarpatti Municipal Compost Yard (20.37 Acres)",
+            "Mudangiar Road Micro Composting Centre (MCC)",
+            "5 MT Biomethanation Power Plant",
+            "Cotton Market Resource Recovery Centre (MRF)"
+        ],
+        "coordinates": { "lat": 9.4532, "lng": 77.5550 }
+    },
+    "rajapalayam": {
+        "districtName": "Rajapalayam Municipality",
+        "sources": [
+            "Arasiarpatti Municipal Compost Yard (20.37 Acres)",
+            "Mudangiar Road Micro Composting Centre (MCC)",
+            "5 MT Biomethanation Power Plant",
+            "Cotton Market Resource Recovery Centre (MRF)"
+        ],
+        "coordinates": { "lat": 9.4532, "lng": 77.5550 }
+    },
     "chennai": {
         "districtName": "Chennai",
         "sources": [

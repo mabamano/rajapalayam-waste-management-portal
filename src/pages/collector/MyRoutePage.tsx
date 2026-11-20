@@ -7,13 +7,13 @@ import { Badge } from '@/components/ui/badge';
 import RouteMap from '@/components/map/RouteMap';
 
 export default function MyRoutePage() {
-    // Mock lat/lng for Chennai context
+    // Real coordinates for Rajapalayam municipality route
     const routePoints = [
-        { id: 1, address: 'Anna Salai, Store', status: 'Pending', time: '09:00 AM', lat: 13.0604, lng: 80.2496 },
-        { id: 2, address: 'T. Nagar, Market Lane', status: 'Pending', time: '09:15 AM', lat: 13.0402, lng: 80.2337 },
-        { id: 3, address: 'CMBT Bus Stand', status: 'Completed', time: '09:30 AM', lat: 13.0694, lng: 80.2081 },
-        { id: 4, address: 'Koyambedu Market', status: 'Completed', time: '09:45 AM', lat: 13.0732, lng: 80.1932 },
-        { id: 5, address: 'Vadapalani, Last Stop', status: 'Pending', time: '10:00 AM', lat: 13.0494, lng: 80.2125 },
+        { id: 1, address: 'Tenkasi Road (Municipal Office)', status: 'Pending', time: '06:30 AM', lat: 9.4530, lng: 77.5548 },
+        { id: 2, address: 'Old Bus Stand Commercial Complex', status: 'Pending', time: '07:15 AM', lat: 9.4512, lng: 77.5580 },
+        { id: 3, address: 'Cotton Market (Panju Market Yard)', status: 'Completed', time: '08:00 AM', lat: 9.4565, lng: 77.5620 },
+        { id: 4, address: 'Railway Feeder Road Junction', status: 'Completed', time: '08:45 AM', lat: 9.4485, lng: 77.5615 },
+        { id: 5, address: 'Mudangiar Road Micro Compost Centre', status: 'Pending', time: '09:30 AM', lat: 9.4450, lng: 77.5480 },
     ] as const;
 
     return (
@@ -22,7 +22,7 @@ export default function MyRoutePage() {
                 <div className="flex justify-between items-start">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-display font-bold">My Route</h1>
-                        <p className="text-muted-foreground">Today's assigned collection path: Chennai West Zone</p>
+                        <p className="text-muted-foreground">Today's assigned collection path: Rajapalayam Division 2 (Central Zone)</p>
                     </div>
                     <Button className="gap-2">
                         <Navigation className="w-4 h-4" /> Start Navigation
@@ -47,8 +47,8 @@ export default function MyRoutePage() {
                         <Card className="h-[500px] border-2 overflow-hidden">
                             <RouteMap
                                 points={[...routePoints]}
-                                center={[13.0604, 80.2496]}
-                                zoom={13}
+                                center={[9.4530, 77.5548]}
+                                zoom={14}
                             />
                         </Card>
                     </div>

@@ -94,25 +94,25 @@ export const calculateWasteTotals = (logs: WasteLog[]) => {
   );
 };
 
-// City-wide statistics
+// City-wide statistics for Rajapalayam Municipality (Special Grade)
 export const cityStats = {
-  totalWasteToday: 12580,
-  totalHouseholds: 1250,
-  activeCollectors: 45,
-  recyclingRate: 38,
-  segregationScore: 85,
-  hazardousAlerts: 3,
+  totalWasteToday: 48500, // 48.5 TPD
+  totalHouseholds: 47497, // ~47,497 residential assessments in Rajapalayam
+  activeCollectors: 128,  // Workers across 9 sanitary divisions
+  recyclingRate: 45,      // Micro Composting Centres + dry waste recovery
+  segregationScore: 84,   // City-wide compliance score
+  hazardousAlerts: 2,
 };
 
 import { SmartBin } from '@/types';
 
-// Mock bin data for Chennai/City Map
+// Mock bin data for Rajapalayam Municipality / City Map
 export const mockBins: SmartBin[] = [
   {
     id: '1',
-    binId: 'BIN001',
-    wardNumber: 'W01',
-    location: { lat: 13.0827, lng: 80.2707, address: 'Chennai Main Market' },
+    binId: 'RAJ-BIN-001',
+    wardNumber: 'W08',
+    location: { lat: 9.4532, lng: 77.5550, address: 'Gandhi Kalai Mandram (Municipal Office)' },
     fillLevel: 85,
     wasteType: 'mixed',
     lastUpdated: new Date(),
@@ -120,9 +120,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '2',
-    binId: 'BIN002',
-    wardNumber: 'W01',
-    location: { lat: 13.0694, lng: 80.2081, address: 'CMBT Bus Stand' },
+    binId: 'RAJ-BIN-002',
+    wardNumber: 'W05',
+    location: { lat: 9.4512, lng: 77.5580, address: 'Old Bus Stand Commercial Complex' },
     fillLevel: 45,
     wasteType: 'organic',
     lastUpdated: new Date(),
@@ -130,9 +130,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '3',
-    binId: 'BIN003',
-    wardNumber: 'W02',
-    location: { lat: 13.0104, lng: 80.2356, address: 'Anna University Area' },
+    binId: 'RAJ-BIN-003',
+    wardNumber: 'W18',
+    location: { lat: 9.4601, lng: 77.5592, address: 'New Bus Stand Terminal' },
     fillLevel: 92,
     wasteType: 'recyclable',
     lastUpdated: new Date(),
@@ -140,9 +140,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '4',
-    binId: 'BIN004',
-    wardNumber: 'W02',
-    location: { lat: 13.0827, lng: 80.2755, address: 'Chennai Central Station' },
+    binId: 'RAJ-BIN-004',
+    wardNumber: 'W24',
+    location: { lat: 9.4565, lng: 77.5620, address: 'Cotton Market (Panju Market Yard)' },
     fillLevel: 30,
     wasteType: 'mixed',
     lastUpdated: new Date(),
@@ -150,9 +150,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '5',
-    binId: 'BIN005',
-    wardNumber: 'W03',
-    location: { lat: 13.0012, lng: 80.2565, address: 'Adyar River View' },
+    binId: 'RAJ-BIN-005',
+    wardNumber: 'W14',
+    location: { lat: 9.4485, lng: 77.5615, address: 'Railway Feeder Road Junction' },
     fillLevel: 72,
     wasteType: 'organic',
     lastUpdated: new Date(),
@@ -160,9 +160,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '6',
-    binId: 'BIN006',
-    wardNumber: 'W03',
-    location: { lat: 13.0336, lng: 80.2698, address: 'Mylapore Temple Street' },
+    binId: 'RAJ-BIN-006',
+    wardNumber: 'W28',
+    location: { lat: 9.4410, lng: 77.5510, address: 'PACR Salai / Mill Quarters' },
     fillLevel: 15,
     wasteType: 'hazardous',
     lastUpdated: new Date(),
@@ -170,9 +170,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '7',
-    binId: 'BIN007',
-    wardNumber: 'W04',
-    location: { lat: 13.0850, lng: 80.2100, address: 'Anna Nagar New Colony' },
+    binId: 'RAJ-BIN-007',
+    wardNumber: 'W12',
+    location: { lat: 9.4450, lng: 77.5480, address: 'Mudangiar Road Micro Composting Centre' },
     fillLevel: 95,
     wasteType: 'mixed',
     lastUpdated: new Date(),
@@ -180,9 +180,9 @@ export const mockBins: SmartBin[] = [
   },
   {
     id: '8',
-    binId: 'BIN008',
-    wardNumber: 'W05',
-    location: { lat: 13.0163, lng: 80.2155, address: 'Guindy Industrial Estate' },
+    binId: 'RAJ-BIN-008',
+    wardNumber: 'W42',
+    location: { lat: 9.4320, lng: 77.5310, address: 'Arasiarpatti Municipal Compost Yard (20.37 Acres)' },
     fillLevel: 55,
     wasteType: 'recyclable',
     lastUpdated: new Date(),

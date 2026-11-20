@@ -1,203 +1,89 @@
-# System Architecture & Workflow
+# System Architecture & Workflow: Rajapalayam Municipality
 
-This document outlines the end-to-end workflow of the Odisha Smart Bin Waste Management System (Sujog). It is designed to help visualize the system for flowcharts and architectural diagrams.
+This document outlines the end-to-end architecture and workflow of the **Smart Waste 360** platform for **Rajapalayam Municipality** (*ராஜபாளையம் நகராட்சி*), Virudhunagar District, Tamil Nadu.
 
-## 1. High-Level System Overview
+---
 
-The system connects four key stakeholders: **Households**, **Waste Collectors**, **Municipal Officers**, and **3rd Party Partners**. It leverages IoT sensors (Smart Bins) and a Web Dashboard for real-time monitoring and management.
+## 1. High-Level Architectural Flow
 
 ```mermaid
 graph TD
-    subgraph Users_Group ["Users"]
-        H[Household]
-        C[Collector]
-        O[Officer]
-        TP["3rd Party"]
+    subgraph Citizens ["1. Households & Commercial Units"]
+        H["47,497 Residential Households (42 Wards)"]
+        C_COM["5,876 Commercial Establishments"]
     end
 
-    subgraph Frontend ["Frontend (Web Dashboard)"]
-        UI[React Application]
-        Auth[Auth Context]
-        Dash[Dashboards per Role]
+    subgraph Field ["2. Field Sanitary Operations"]
+        COL["128 Sanitary Workers & Drivers (9 Divisions)"]
+        QR["Household QR Scan Handshake"]
+        TRUCK["Collection Tractors / Tipper Lorries (GPS)"]
+        BIN["Ultrasonic Smart Bins (IoT)"]
     end
 
-    subgraph Backend ["Backend / Infrastructure"]
-        FB[Firebase Realtime DB]
-        AuthSvc[Mock Auth Service]
+    subgraph Facilities ["3. Solid Waste Processing Facilities"]
+        MCC["Micro Composting Centres (Wet Waste -> Manure)"]
+        BIO["5 MT Biomethanation Power Plant"]
+        MRF["Resource Recovery Centre (Dry Recyclables)"]
+        YARD["Arasiarpatti Municipal Compost Yard (20.37 Acres)"]
     end
 
-    subgraph IoT ["IoT / Physical Layer"]
-        Bin["Smart Bin (RPi Sensors)"]
-        QR["QR Code Verification"]
+    subgraph Central ["4. Digital Command & Administration"]
+        FB[("Firebase Realtime DB / Cloud Store")]
+        DASH["React / Vite Web Dashboard"]
+        AI["Google Gemini 2.5 Flash AI (Tamil / English)"]
+        OFF["Municipal Health Officer & Sanitary Inspectors"]
+        COMM["Municipal Commissioner"]
     end
 
-    H -->|Register/Login| UI
-    C -->|Register/Login| UI
-    O -->|Register/Login| UI
-    TP -->|Register/Login| UI
+    H -->|Segregates Waste| QR
+    COL -->|Scans QR & Collects| QR
+    QR -->|Updates Collection Log| FB
+    BIN -->|Telemetry / Fill Level| FB
+    TRUCK -->|Route Completion Data| FB
 
-    UI --> Auth
-    UI -->|Reads/Writes| FB
+    COL -->|Wet Waste| MCC
+    COL -->|Organic Excess| BIO
+    COL -->|Dry Recyclables| MRF
+    COL -->|Residual Waste| YARD
 
-    Bin -->|Pushes Data| FB
-    C -->|Scans| QR
-    QR -->|Updates| FB
+    FB <--> DASH
+    DASH <--> AI
+    DASH --> OFF
+    DASH --> COMM
 ```
 
 ---
 
-## 2. User Registration & Authentication Flow
+## 2. Stakeholder Dashboards & Workflows
 
-All users must authenticate to access their specific dashboards. The system supports a "New User Registration" flow.
+### 2.1 Household Citizen Workflow
+1. **Access:** Login with Ward (`W08`), Street (`S02`), House (`H012`), and 4-digit PIN.
+2. **Features:**
+   * View daily collection status and scheduled pickup slot (06:30 AM – 11:30 AM).
+   * Download personal QR Code for doorstep scanning.
+   * Check segregation score and accumulated green reward points.
+   * Chat in Tamil or English with the Smart Bin Assistant.
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant LoginPage
-    participant RegSelector
-    participant RegForm
-    participant AuthSystem
-    participant Dashboard
+### 2.2 Field Collector (தூய்மை பணியாளர்) Workflow
+1. **Access:** Collector ID (`COL001`) and password.
+2. **Features:**
+   * **My Route:** Follow optimized collection path across Rajapalayam landmarks (Tenkasi Road, Old Bus Stand, Panju Market, Railway Feeder Road, Mudangiar MCC).
+   * **QR Scanner:** Scan household QR codes with location and timestamp validation.
+   * **Report Violations:** Log non-segregated or hazardous waste incidents.
 
-    User->>LoginPage: Visits /login
-    User->>LoginPage: Clicks "New User? Register Here"
-    LoginPage->>RegSelector: Navigates to Register Selection
-    
-    rect rgb(240, 248, 255)
-        note right of User: Role Selection
-        User->>RegSelector: Selects Role (Household/Collector/etc.)
-        RegSelector->>RegForm: Opens Specific Form
-    end
-
-    User->>RegForm: Enters Details (e.g., Aadhar, GST, Emp ID)
-    User->>RegForm: Submits Form
-    
-    RegForm->>AuthSystem: validates & creates account
-    AuthSystem-->>RegForm: Success
-    
-    RegForm->>Dashboard: Auto-redirects to Role-based Dashboard
-```
+### 2.3 Municipal Commissioner & Division Inspectors
+1. **Access:** Admin ID (`MUN001` / `OFF001`).
+2. **Features:**
+   * **Live Bin Map:** Leaflet map centered at `[9.4532, 77.5550]` displaying real-time fill levels (Green <50%, Amber 50-70%, Yellow 70-90%, Red >90%).
+   * **Division Oversight:** Real-time analytics across the 9 Sanitary Divisions and 42 administrative wards.
+   * **Predictive Surge Planning:** Automated calendar alerts for local events (e.g., Panguni Pongal, Ayyanar Kovil pilgrimage, cotton ginning season).
 
 ---
 
-## 3. Household Workflow
+## 3. Database Schema Overview
 
-**Goal**: Monitor own waste generation, view history, and ensure pickup.
-
-1.  **Registration**: User provides Ward, Street, House No, Aadhar, EB Number.
-2.  **Dashboard**:
-    *   View waste generation history.
-    *   Check reward points.
-    *   Download QR Code (for collector validation).
-    *   View notifications/announcements.
-
-```mermaid
-graph LR
-    H[Household User] -->|Log In| D[Household Dashboard]
-    D -->|View| Stats[Waste Stats]
-    D -->|View| Hist[Collection History]
-    D -->|Generate| QR[My QR Code]
-    
-    subgraph PA ["Physical Action"]
-        C[Collector] -->|Scans| QR
-        QR -->|Verifies| Pickup[Pickup Verified]
-    end
-```
-
----
-
-## 4. Collector Workflow
-
-**Goal**: Efficiently collect waste from assigned routes and report status.
-
-1.  **Registration**: User provides Employee ID, Collector ID.
-2.  **Dashboard**:
-    *   View assigned route (Ward/Street).
-    *   **QR Scan**: Scan household QR to verify pickup.
-    *   Report issues (e.g., "Bin Broken", "Mixed Waste Violation").
-    *   Mark attendance.
-
-```mermaid
-graph TD
-    C[Collector] -->|Log In| CD[Collector Dashboard]
-    CD -->|View| Route[Assigned Route]
-    
-    subgraph CP ["Collection Process"]
-        C -->|Arrives at| H[Household]
-        C -->|Scans QR| App[Mobile View / Dashboard]
-        App -->|Updates| DB[Database]
-        DB -->|Credits| Pts[Reward Points to Household]
-    end
-    
-    C -->|Report| Issue[Issue/Violation]
-    Issue -->|Notify| O[Officer]
-```
-
----
-
-## 5. Municipal Officer Workflow
-
-**Goal**: City-wide monitoring, resource allocation, and anomaly detection.
-
-1.  **Registration**: User provides Govt ID, Department.
-2.  **Dashboard**:
-    *   **Live Map**: View status of all Smart Bins (Full/Empty/Critical).
-    *   **Analytics**: View total waste collected, efficiency metrics.
-    *   **Management**: View lists of Households and Collectors.
-    *   **Reports**: Export data for official use.
-
-```mermaid
-graph TD
-    O[Officer] -->|Visits| Map[Live Bin Map]
-    Map -->|Monitors| Bins[Smart Bins]
-    
-    Bins -->|Sensor Data| Cloud
-    Cloud -->|Update| Map
-    
-    O -->|Assigns| Task[Route/Task]
-    Task -->|Sent to| C[Collector]
-```
-
----
-
-## 6. 3rd Party Partner Workflow
-
-**Goal**: Monitor specific zones assigned to private entities.
-
-1.  **Registration**: User provides Partner Name, GST Number.
-2.  **Dashboard**:
-    *   View aggregate stats for assigned zones.
-    *   View specific "Partner Map".
-    *   Access limited reports.
-
----
-
-## 7. IoT Data Flow (Smart Bin)
-
-Sensors in the bin measure fill level and send data to the cloud.
-
-```mermaid
-sequenceDiagram
-    participant Sensor as RPi/Sensor
-    participant Script as Python Script
-    participant Firebase
-    participant Web as Web Dashboard
-
-    loop Every 5 Minutes / Trigger
-        Sensor->>Script: Reads Distance (Ultrasonic)
-        Script->>Script: Calculates Fill %
-        Script->>Firebase: PUT /binStatuses/{binId}
-    end
-
-    Firebase-->>Web: Real-time Update (Listener)
-    Web->>Web: Updates Map Icon Color (Green/Amber/Red)
-```
-
-## 8. Data Structures
-
-*   **HouseholdUser**: `id`, `ward`, `street`, `house`, `aadhar`, `ebNumber`, `points`.
-*   **SmartBin**: `id`, `location (lat, lng)`, `fillLevel`, `status`, `lastUpdated`.
-*   **WasteLog**: `id`, `householdId`, `collectorId`, `wasteType`, `weight`, `timestamp`.
-*   **Collector**: `id`, `employeeId`, `assignedWard`.
-*   **Officer**: `id`, `govtId`, `role`.
-*   **ThirdParty**: `id`, `gstNumber`, `partnerName`.
+* **HouseholdUser:** `id`, `wardNumber (W01-W42)`, `streetNumber`, `houseNumber`, `pin`, `rewardPoints`, `aadharNumber`, `ebNumber`.
+* **SmartBin:** `id`, `binId (RAJ-BIN-*)`, `location: { lat, lng, address }`, `wardNumber`, `fillLevel (%)`, `wasteType`, `status`, `lastUpdated`.
+* **WasteLog:** `id`, `houseId`, `collectorId`, `wasteType ('organic'|'recyclable'|'hazardous')`, `weight (kg)`, `fillLevel`, `mlConfidence`, `timestamp`.
+* **Collector:** `id`, `collectorId`, `name`, `assignedWard (W01-W42)`, `phone`.
+* **MunicipalAdmin:** `id`, `adminId`, `name`, `role ('municipal_admin')`, `municipality ('Rajapalayam Municipality')`, `email`.

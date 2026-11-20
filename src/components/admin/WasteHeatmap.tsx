@@ -9,8 +9,8 @@ const containerStyle = {
 };
 
 const center = {
-    lat: 13.0827, // Chennai (Tamil Nadu Capital)
-    lng: 80.2707
+    lat: 9.4532, // Rajapalayam Town Center (Gandhi Kalai Mandram / Municipal Office)
+    lng: 77.5550
 };
 
 const mapOptions = {
@@ -20,21 +20,31 @@ const mapOptions = {
     mapTypeControl: false,
 };
 
-// Mock Data for Tamil Nadu Structure
-const CORPORATIONS = ['Chennai', 'Coimbatore', 'Madurai', 'Trichy', 'Salem'];
-const ZONES = ['Zone 1', 'Zone 2', 'Zone 3', 'Zone 4', 'Zone 5'];
-const WARDS = Array.from({ length: 15 }, (_, i) => `Ward ${i + 1}`);
+// 9 Sanitary Divisions & 42 Wards of Rajapalayam Municipality
+const CORPORATIONS = [
+    'Division 1 (Old Bus Stand)',
+    'Division 2 (Tenkasi Road)',
+    'Division 3 (PACR Salai)',
+    'Division 4 (Railway Feeder)',
+    'Division 5 (Mudangiar)',
+    'Division 6 (Cotton Market)',
+    'Division 7 (Malaiyadigavur)',
+    'Division 8 (Srivilliputtur Rd)',
+    'Division 9 (Samusigapuram Rd)'
+];
+const ZONES = ['Zone 1 (North)', 'Zone 2 (Central)', 'Zone 3 (South)', 'Zone 4 (East)', 'Zone 5 (West)'];
+const WARDS = Array.from({ length: 42 }, (_, i) => `Ward ${i + 1}`);
 
 // Mock Bins Generation
 const generateMockBins = (count: number, baseLat: number, baseLng: number): SmartBin[] => {
     return Array.from({ length: count }).map((_, i) => ({
         id: `bin-${i}`,
-        binId: `TN-BIN-${1000 + i}`,
-        wardNumber: 'Ward ' + (i % 15 + 1),
+        binId: `RAJ-BIN-${1000 + i}`,
+        wardNumber: 'Ward ' + (i % 42 + 1),
         location: {
-            lat: baseLat + (Math.random() - 0.5) * 0.05,
-            lng: baseLng + (Math.random() - 0.5) * 0.05,
-            address: `Street ${i}, Chennai`
+            lat: baseLat + (Math.random() - 0.5) * 0.04,
+            lng: baseLng + (Math.random() - 0.5) * 0.04,
+            address: `Street ${(i % 12) + 1}, Rajapalayam`
         },
         fillLevel: Math.floor(Math.random() * 100),
         wasteType: Math.random() > 0.5 ? 'organic' : 'mixed',

@@ -4,51 +4,8 @@ import BinMap from '@/components/map/BinMap';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { SmartBin } from '@/types';
+import { mockBins } from '@/data/mockData';
 import { MapPin, Trash2, AlertTriangle, CheckCircle } from 'lucide-react';
-
-// Reusing same mock data for now, in real app this might come from API with restricted fields
-const mockBins: SmartBin[] = [
-    {
-        id: '1',
-        binId: 'BIN001',
-        wardNumber: 'W01',
-        location: { lat: 13.0827, lng: 80.2707, address: 'Chennai Main Market' },
-        fillLevel: 85,
-        wasteType: 'mixed',
-        lastUpdated: new Date(),
-        status: 'active',
-    },
-    {
-        id: '2',
-        binId: 'BIN002',
-        wardNumber: 'W01',
-        location: { lat: 13.0694, lng: 80.2081, address: 'CMBT Bus Stand' },
-        fillLevel: 45,
-        wasteType: 'organic',
-        lastUpdated: new Date(),
-        status: 'active',
-    },
-    {
-        id: '3',
-        binId: 'BIN003',
-        wardNumber: 'W02',
-        location: { lat: 13.0104, lng: 80.2356, address: 'Anna University Area' },
-        fillLevel: 92,
-        wasteType: 'recyclable',
-        lastUpdated: new Date(),
-        status: 'active',
-    },
-    {
-        id: '7',
-        binId: 'BIN007',
-        wardNumber: 'W04',
-        location: { lat: 13.0850, lng: 80.2100, address: 'Anna Nagar New Colony' },
-        fillLevel: 95,
-        wasteType: 'mixed',
-        lastUpdated: new Date(),
-        status: 'active',
-    },
-];
 
 const ThirdPartyMap = () => {
     const [selectedBin, setSelectedBin] = useState<SmartBin | null>(null);

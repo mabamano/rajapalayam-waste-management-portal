@@ -14,13 +14,16 @@ export interface Festival {
     description: string;
 }
 
-// Tamil Nadu Festival Calendar (2025-2026 Focus)
+// Tamil Nadu & Rajapalayam Festival / Seasonal Surge Calendar (2025-2026 Focus)
 export const TAMIL_NADU_FESTIVALS: Festival[] = [
     { name: 'Pongal', date: '2026-01-14', wasteType: 'Organic', surgeLevel: 'High', description: 'Harvest festival. Expect high organic waste (sugarcane, banana leaves).' },
     { name: 'Mattu Pongal', date: '2026-01-15', wasteType: 'Organic', surgeLevel: 'Medium', description: 'Cattle worship. Organic waste surge.' },
     { name: 'Kaanum Pongal', date: '2026-01-16', wasteType: 'Plastic', surgeLevel: 'High', description: 'Outings and gatherings. Expect high plastic/litter.' },
     { name: 'Thaipusam', date: '2026-02-02', wasteType: 'Mixed', surgeLevel: 'High', description: 'Temple festivals. Plastic and organic waste surge.' },
+    { name: 'Ayyanar Kovil Thiruvizha', date: '2026-03-20', wasteType: 'Plastic', surgeLevel: 'High', description: 'Pilgrimage and hill corridor gathering. Expect high plastic and bottle litter.' },
+    { name: 'Panguni Pongal (Sri Maya Karuppasamy)', date: '2026-04-05', wasteType: 'Organic', surgeLevel: 'High', description: 'Major temple festival in Rajapalayam. Heavy organic, food and flower waste surge.' },
     { name: 'Tamil New Year', date: '2026-04-14', wasteType: 'Organic', surgeLevel: 'Medium', description: 'Feasts and decorations.' },
+    { name: 'Cotton Ginning Peak Season', date: '2026-06-15', wasteType: 'Mixed', surgeLevel: 'Medium', description: 'Textile mills and cotton market surge in packaging, burlap and fiber waste.' },
     { name: 'Vinayagar Chaturthi', date: '2026-09-14', wasteType: 'Hazardous', surgeLevel: 'High', description: 'Idol immersion. Potential water pollution and POP waste.' },
     { name: 'Diwali', date: '2026-11-08', wasteType: 'Hazardous', surgeLevel: 'High', description: 'Firecracker waste (hazardous) and packaging (plastic).' },
     { name: 'Karthigai Deepam', date: '2026-11-23', wasteType: 'Organic', surgeLevel: 'Medium', description: 'Lamps and oil waste.' },

@@ -20,14 +20,14 @@ const MOCK_DATA: Record<string, LeaderboardEntry[]> = {
         { rank: 5, name: "Dr. Sarah", points: 1650, badges: [], change: "up" },
     ],
     ward: [
-        { rank: 1, name: "Green Apartments", points: 15400, badges: ["Zero Waste"], change: "same" },
+        { rank: 1, name: "PACR Nagar Residents", points: 15400, badges: ["Zero Waste"], change: "same" },
         { rank: 12, name: "Your Household", points: 2100, badges: [], change: "up" },
-        { rank: 2, name: "Sunshine Villas", points: 14200, badges: ["Composter"], change: "up" },
+        { rank: 2, name: "Mudangiar Road Colony", points: 14200, badges: ["Composter"], change: "up" },
     ],
     city: [
-        { rank: 1, name: "Ward 12 (Adyar)", points: 89000, badges: ["Platinum Ward"], change: "same" },
-        { rank: 2, name: "Ward 45 (Anna Nagar)", points: 85000, badges: ["Gold Ward"], change: "up" },
-        { rank: 3, name: "Ward 23 (T. Nagar)", points: 81000, badges: ["Silver Ward"], change: "down" },
+        { rank: 1, name: "Ward 12 (Mudangiar Road)", points: 89000, badges: ["Platinum Ward"], change: "same" },
+        { rank: 2, name: "Ward 08 (Gandhi Kalai Mandram)", points: 85000, badges: ["Gold Ward"], change: "up" },
+        { rank: 3, name: "Ward 24 (Cotton Market)", points: 81000, badges: ["Silver Ward"], change: "down" },
     ]
 };
 
@@ -47,8 +47,8 @@ export function Leaderboard() {
                 <Tabs defaultValue="street" className="w-full">
                     <TabsList className="grid w-full grid-cols-3 mb-4">
                         <TabsTrigger value="street">My Street</TabsTrigger>
-                        <TabsTrigger value="ward">Ward 12</TabsTrigger>
-                        <TabsTrigger value="city">Chennai</TabsTrigger>
+                        <TabsTrigger value="ward">Ward 12 (Mudangiar)</TabsTrigger>
+                        <TabsTrigger value="city">Rajapalayam</TabsTrigger>
                     </TabsList>
 
                     {Object.entries(MOCK_DATA).map(([key, data]) => (

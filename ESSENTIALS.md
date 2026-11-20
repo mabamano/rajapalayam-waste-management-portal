@@ -1,57 +1,50 @@
-# Project Essentials & Contribution Guide
+# Project Essentials & Setup Guide: Rajapalayam Municipality
 
-Welcome to the **Odisha Smart Bin Dashboard** project! This guide will help you get set up and ready to contribute.
+Welcome to the **Smart Waste 360 - Rajapalayam Municipality** codebase.
 
-## 🚀 Project Overview
+---
 
-This project consists of two main parts:
-1.  **Web Dashboard**: A React + Vite application for monitoring smart bins.
-2.  **Sensor Script**: A Python script (`scripts/rpi_sensor_push.py`) that simulates/pushes sensor data to Firebase.
+## 🚀 Quick Start Guide
 
-## 🛠️ Prerequisites
+### Prerequisites
+* **Node.js**: v18.0 or higher
+* **npm**: v9.0 or higher
+* **Python**: v3.8+ (for IoT sensor simulation scripts)
 
-Before you begin, make sure you have the following installed:
--   [Node.js](https://nodejs.org/) (v18 or higher recommended)
--   [Python](https://www.python.org/) (v3.8 or higher recommended)
+### 1. Web Application Setup
+```bash
+# 1. Install NPM packages
+npm install
 
-## 💻 Web Dashboard Setup
+# 2. Configure environment variables (.env)
+cp .env.example .env
+# Set VITE_GEMINI_API_KEY in .env
 
-1.  **Navigate to the project directory**:
-    ```bash
-    cd odisha-smart-bin-29
-    ```
+# 3. Start development server
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+---
 
-3.  **Start the development server**:
-    ```bash
-    npm run dev
-    ```
-    The app should now be running at `http://localhost:8080` (or similar).
+### 2. IoT Sensor Simulation Setup
+To simulate smart bins pushing fill level and weight data to Firebase:
 
-## 🐍 Sensor Script Setup
+```bash
+# 1. Install Python requirements
+pip install -r requirements.txt
 
-If you are working on the hardware/sensor simulation side:
+# 2. Run the Raspberry Pi / Smart Bin sensor push script
+python scripts/rpi_sensor_push.py
+```
 
-1.  **Install Python dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+The script publishes telemetry for demo smart bin `RAJ-BIN-001` located at **Gandhi Kalai Mandram (Rajapalayam Municipal Office)**.
 
-2.  **Run the sensor simulation**:
-    ```bash
-    python scripts/rpi_sensor_push.py
-    ```
+---
 
-> **Note**: The script is currently configured to push mock data to a Firebase Realtime Database. Check `scripts/rpi_sensor_push.py` for configuration details.
-
-## 🤝 Contribution Guidelines
-
--   **Branching**: Create a new branch for your feature or fix (e.g., `feature/new-chart` or `fix/sensor-bug`).
--   **Commits**: Write clear, concise commit messages.
--   **Pull Requests**: Open a PR when your changes are ready for review.
-
-Happy coding!
+## 🏢 Rajapalayam Municipal Profiles
+* **Municipality:** Special Grade Municipality, Virudhunagar District, Tamil Nadu
+* **Administrative Wards:** 42 Wards (`W01` to `W42`)
+* **Sanitary Divisions:** 9 Sanitary Divisions (monitored by Sanitary Inspectors)
+* **Average Daily MSW:** 48.5 TPD (~28 TPD Wet, ~20.5 TPD Dry)
+* **Primary Disposal Site:** Arasiarpatti Municipal Compost Yard (20.37 Acres)
